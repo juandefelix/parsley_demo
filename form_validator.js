@@ -3,7 +3,6 @@ window.Parsley
     requirementType: 'regexp',
     validateString: function(value, requirement) {
       var onlyNumbers = value.replace(/\D/g,'');
-      // console.log(requirement.test(onlyNumbers));
       return(requirement.test(onlyNumbers));
     },
     messages: { en: 'You need at least 10 numbers' }
@@ -74,5 +73,11 @@ $('document').ready(function(){
         $('.validation-errors').addClass('validation-errors-active');
     }
     $("html, body").animate({ scrollTop: 0 }, "fast");
-  });        
+  });  
+
+  $('#example-form').submit(function(event){
+    event.preventDefault();
+    console.log('hi');
+    $('h1').text("Thank you for submitting!");
+  })      
 })
