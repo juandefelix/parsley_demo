@@ -6,12 +6,12 @@
 <div class="validation-errors"></div>
 
 <h1>Enter at least one phone.</h1>
-<form data-parsley-validate data-parsley-ui-enabled="false">
+<form id="example-form" data-parsley-validate data-parsley-ui-enabled="false">
   <label>Home</label>
-  <input name="home" id="home" type="text"  data-parsley-phone="/[0-9]{10}/">
+  <input name="home" id="home" type="text" data-parsley-required data-parsley-phone="/[0-9]{10}/">
   <br><br>
   <label>Mobile</label>
-  <input name="mobile" id="mobile" type="text"  data-parsley-phone="/[0-9]{10}/">
+  <input name="mobile" id="mobile" type="text" data-parsley-required data-parsley-phone="/[0-9]{10}/">
   <br><br>
   <input type="submit">
 </form>

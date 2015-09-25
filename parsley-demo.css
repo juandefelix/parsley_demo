@@ -1,0 +1,16 @@
+.validation-errors-active {
+  border: 1px solid #FF6666;
+  background-color: #FFCCCC;
+  border-radius: 3px;
+
+  padding: 5px;
+
+  color: #4C0000;
+
+  font-family: sans-serif;
+
+}
+
+h1, form {
+  font-family: sans-serif;
+}

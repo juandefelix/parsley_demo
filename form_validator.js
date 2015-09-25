@@ -17,21 +17,26 @@ FormValidator.validator = function(thisPhone, otherPhone) {
   this.checkForEmpty = function(){  // removed validation if empty, adds it if not empty
     if(!isEmpty(thisPhone)){
       thisPhone.attr('data-parsley-phone', "/[0-9]{10}/");
+      thisPhone.attr('data-parsley-required', "true");
     } else if (isEmpty(thisPhone)  && hasValidations(otherPhone)){
       thisPhone.removeAttr('data-parsley-phone');
+      thisPhone.removeAttr('data-parsley-required');
     }
   } 
 
   this.removeOtherValidation = function (){  // remove validation in other element if possible
     if (hasValidations(thisPhone) && thisPhone.parsley().isValid() && isEmpty(otherPhone)){
       otherPhone.removeAttr('data-parsley-phone');
+      otherPhone.removeAttr('data-parsley-required');
     }
   }
 
   this.restoreValidations = function (){
     if (isEmpty(thisPhone) && isEmpty(otherPhone)){
-      thisPhone.attr('data-parsley-phone', "/[0-9]{10}/");
-      otherPhone.attr('data-parsley-phone', "/[0-9]{10}/");
+      thisPhone.attr('data-parsley-phone', '/[0-9]{10}/');
+      thisPhone.attr('data-parsley-required', 'true');
+      otherPhone.attr('data-parsley-phone', '/[0-9]{10}/');
+      otherPhone.attr('data-parsley-required', 'true');
     }
   }
 
@@ -49,13 +54,11 @@ $('document').ready(function(){
     var thisPhone = $(this);
     var otherPhone = $('#home, #mobile').not(this);
     var validator = new FormValidator.validator(thisPhone, otherPhone);
-    
+
     validator.checkForEmpty();
     validator.removeOtherValidation();
     validator.restoreValidations();
   });
-
-
 
   window.Parsley.on('form:validate', function() {
     $('.validation-errors').html('');
